@@ -1,5 +1,6 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require 'bcrypt'
 
 # Include environment settings
 require ::File.expand_path('../config/environments/init', __FILE__)
