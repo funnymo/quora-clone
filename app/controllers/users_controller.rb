@@ -14,9 +14,69 @@ post '/login' do
     User.authenticate(user[email], user[password])
     
     # if a user has successfully been authenticated, you can assign the current user id to a session
+    session[:user_id] = user.id
 end
 
 post '/logout' do
     # kill a session when a user chooses to logout, for example assign nil to a session
     # redirect to the appropriate page
 end
+
+
+
+class UsersController
+    def index
+        @users = User.all
+    end
+
+    def new
+        @user = User.new
+    end
+    
+    def create
+        @user = User.new(params[:user])
+        if @user.save
+            session[:user_id] = @user.id
+            #notify success?
+            #redirect to root
+        else
+            #sign up?
+        end
+    end
+    
+    def login
+        @user = User.find_by_email(params[:user][:email])
+        if @user && @user.authenticate(params[:user][:password])
+            #notify success?
+            session[:user_id] = @user.id
+            #redirect to home
+        else
+            #notify error  :error
+            #redirect to signup
+        end
+    end
+    
+    def logout
+        session.clear
+        #redirect to root
+    end
+end
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

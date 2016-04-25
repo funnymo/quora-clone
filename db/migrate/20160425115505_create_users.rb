@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
             x.string :email
             x.string :encrypted_password
             x.timestamps null: false
+        end
 	end
 end
-
-    #make password an attr_accessor
