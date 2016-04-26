@@ -37,21 +37,21 @@ class UsersController
         @user = User.new(params[:user])
         if @user.save
             session[:user_id] = @user.id
-            #notify success?
+            flash[:success] = "Welcome!"
             #redirect to root
         else
-            #sign up?
+            render 'new'
         end
     end
     
     def login
         @user = User.find_by_email(params[:user][:email])
         if @user && @user.authenticate(params[:user][:password])
-            #notify success?
+            flash[:success] = "Welcome back!"
             session[:user_id] = @user.id
             #redirect to home
         else
-            #notify error  :error
+            flash[:error] = "Something wrong"
             #redirect to signup
         end
     end
