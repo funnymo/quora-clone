@@ -1,6 +1,15 @@
 <div class="login">
 
   <h2>Login</h2>
+  
+  <% if @errors %>
+    <% if @errors == "email-does-not-exist" %>
+      <p>Invalid email or <a href="/signup"> sign up here.</a></p>
+    <% else %>
+      <p>Invalid password.</p>
+    <% end %>
+  <% end %>
+  
   <form method=post action=/login>
     <label>Email: </label>
     <input type=text placeholder="Email" name="user[email]"><br>

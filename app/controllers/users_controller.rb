@@ -1,35 +1,47 @@
 #Signup
+get "/users/signup" do
+  erb :"user/registration"
+end
+
 post '/signup' do
-    user = User.new(params[:user])
-    if user.save
-        session[:user_id] = user.id
-#        flash[:success] = "Welcome!"
-        #redirect to users' page - #{user.id}
-    else
-        @errors = "unable to sign-up"
-#        flash[:error] = "Something went wrong!"
-        #redirect to error?
-    end
+  user = User.new(params[:user])
+  if user.save
+    session[:user_id] = user.id
+    redirect "/users/#{user.id}"
+  else
+    @errors = "unable to sign-up"
+    erb :"user/registration"
+  end
 end
 
 
 #Login
+get '/login' do
+  unless params[:errors].nil?
+    @errors = params[:errors]
+  end
+  erb :"/login"
+end
+  
 post '/login' do
     if user = User.find_by(email: params[:email])
         if user.authenticate(params[:password])
-#            flash[:success] = "Welcome back!"
             session[:user_id] = user.id
-            #redirect to home
+          redirect "/users/#{user.id}"
         else
             @errors = "password-does-not-match"
-#            flash[:error] = "Password does not match"
             #redirect to login error
         end
     else
         errors = "email-does-not-exist"
-#        flash[:error] = "Email does not exist"
-        #redirect to login error
+      redirect "/users/login?errors=#{errors}"
     end
+end
+
+#View
+get "/users/:id" do
+  @user = User.find(params[:id])
+  erb :"user/profile"
 end
 
 
