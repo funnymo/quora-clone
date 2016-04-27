@@ -6,13 +6,11 @@
 
 #Create answer
 post "/answers" do
-    @answer = current_user.answers.new(params[:answer])
-    if @answer.save
-#        flash[:success] = "Answer created!"
-        #redirect to idk where
-    else
-        @error = "Can't add new answer"
-#        flash[:error] = "Oops. Something went wrong"
-        #redirect to some error page
-    end
+  @answer = current_user.answers.new(params[:answer])
+  if @answer.save
+    redirect "/questions/#{@answer.question_id}"
+  else
+    @error = "Can't add new answer"
+    redirect "/questions/#{@answer.question_id}?errors=#{@error}"
+  end
 end

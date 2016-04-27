@@ -1,7 +1,5 @@
 <div class="login">
 
-  <h2>Login</h2>
-  
   <% if @errors %>
     <% if @errors == "email-does-not-exist" %>
       <p>Invalid email or <a href="/signup"> sign up here.</a></p>
@@ -10,12 +8,17 @@
     <% end %>
   <% end %>
   
-  <form method=post action=/login>
-    <label>Email: </label>
-    <input type=text placeholder="Email" name="user[email]"><br>
-    <label>Password: </label>
-    <input type=password placeholder="Password" name="user[password]"><br>
-    <input type=submit value="Login">
-  </form>
+  <% if logged_in? %>
+    <p><%=current_user.name%>, you are logged in.</p>
+  <% else %>
+    <h1>Login</h1>
+    <form method=post action=/login>
+      <label>Email: </label>
+      <input type=text placeholder="Email" name="user[email]"><br>
+      <label>Password: </label>
+      <input type=password placeholder="Password" name="user[password]"><br>
+      <input type=submit value="Login">
+    </form>
+  <% end %>
   
 </div>

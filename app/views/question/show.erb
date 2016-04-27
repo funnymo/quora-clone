@@ -1,8 +1,34 @@
-<div class="question_show">
-    Showing all questions
+<div class="question_by_id">
+  <h1>Question</h1>
+  <p>Title: <%=@question.title%></p>
+  <p>Description: <%=@question.question_text%></p>
+  
+  
+    
 </div>
 
 
-<div class="answer_show">
-    Showing all answers subsequent to questions
+<div class="answer_by_question">
+  <h2>Add answer</h2>
+  
+  <% if logged_in %>
+  <form action="/answers" method="post">
+ 		<input type="hidden" name="question_id" value="<%=@question.id%>">
+ 		<label>Answer: </label>
+ 		<textarea type="text" name="answer_text"></textarea>
+ 		<input type="submit" name="Add Answer" />
+ 	</form>
+  <% else %>
+  <p>You are not logged in. Only members are allowed to post new answers.</p>
+  <% end %>
+  
+  <h2>Answers:</h2>
+  
+  <% @answers.each do |answer| %>
+    <% if answer.question_id == @question.id %>
+      <p>Answer: <%=answer.answer_text%></p>
+    <% end %>
+  <% end %>
+  
+  
 </div>

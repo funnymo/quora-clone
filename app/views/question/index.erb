@@ -1,5 +1,15 @@
-<div class="question_index">
-    Questions index page showing particular question
+<div class="all_questions">
+    
+  <table>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.question_text %></td>
+        <td><%= question.user_id %></td>
+      </tr>
+    <% end %>
+  </table>
+  
 </div>
 
 

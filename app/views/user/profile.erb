@@ -10,4 +10,16 @@
     <a href="/logout"><button>Logout</button></a>
   
   <% end %>
+  
+  
+  <h1>Your Questions</h1>
+  
+  <% @user.questions.each do |question| %>
+    <ul>
+      <li>Question: <%=question.title%></li>
+      <li>Description: <%=question.question_text%></li>
+    </ul>
+  <% end %>
+  <a href="/questions/new"><button>New Question</button></a>
+  
 </div>

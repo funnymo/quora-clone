@@ -1,3 +1,23 @@
 <div class="question_new">
-    Submit new question page
+  <h1>New Question</h1>
+  
+  <% unless @error.nil? %>
+    <% @error.each do |error| %>
+      <%= error %>
+    <% end %>
+  <% end %>
+  
+  <% if logged_in? %>
+    <form method=post action=/questions>
+      <label>Question: </label>
+      <input type=text placeholder="Title" name="question[title]"><br>
+      <label>Description: </label>
+      <input type=text placeholder="Description" name="question[question_text]"><br>
+      <input type=submit value="New Question">
+    </form>
+  
+  <% else %>
+    <p>You are not logged in. Only members are allowed to post new questions.</p>
+  <% end %>
+  
 </div>

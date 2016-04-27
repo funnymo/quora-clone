@@ -1,13 +1,17 @@
-<div class="static_index">
+<div class="welcome_page">
   <h1>Hello World</h1>
-  <h2>Login</h2>
-  <form method=post action=/login>
-    <label>Email: </label>
-    <input type=text placeholder="Email" name="user[email]"><br>
-    <label>Password: </label>
-    <input type=password placeholder="Password" name="user[password]"><br>
-    <input type=submit value="Login">
-  </form>
   
+  <% if logged_in? %>
+    <p>Welcome <%=current_user.name %>!</p>
+  <% else %>
+    <h1>Login</h1>
+    <form method=post action=/login>
+      <label>Email: </label>
+      <input type=text placeholder="Email" name="user[email]"><br>
+      <label>Password: </label>
+      <input type=password placeholder="Password" name="user[password]"><br>
+      <input type=submit value="Login">
+    </form>
+  <% end %>
   
 </div>
