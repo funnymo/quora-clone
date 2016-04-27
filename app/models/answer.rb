@@ -1,4 +1,10 @@
 class Answer < ActiveRecord::Base
-	# This is Sinatra! Remember to create a migration!
-    attr_accessors :answer_text, :user_id
+  
+  attr_accessors :answer
+  
+  validates :answer_text, presence: true
+  
+  belongs_to :user
+  belongs_to :question
+  
 end
