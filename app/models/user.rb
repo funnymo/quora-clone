@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     validates :email, uniqueness: true
 #    validates :encrypted_password, presence :true, length:{in: 6..20}
     
+    has_many :questions
     
     #has_secure_password
     before_create :password

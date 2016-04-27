@@ -13,6 +13,7 @@ gem 'thin'
 # Adding ActiveRecord and Database Components
 gem 'activerecord'
 gem 'activesupport'
+gem 'actionpack'
 gem 'sinatra-activerecord'
 gem 'bcrypt'
 

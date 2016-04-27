@@ -21,7 +21,11 @@ require "sinatra/reloader" if development?
 require 'erb'
 require 'uri'
 ######################################################################
+# Pagination
+require 'will_paginate'
 
+# Password encryption
+require 'bcrypt'
 
 # System Setup
 ######################################################################
