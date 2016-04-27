@@ -1,0 +1,17 @@
+<div class="answer_new">
+
+  <h2>New Answer</h2>
+
+
+  <% if logged_in %>
+    <form action="/answers" method="post">
+      <input type="hidden" name="question_id" value="<%=@question.id%>">
+      <label>Answer: </label>
+      <textarea type="text" name="answer_text"></textarea>
+      <input type="submit" name="Add Answer" />
+ 	</form>
+  <% else %>
+    <p>You are not logged in. Only members are allowed to post new answers.</p>
+  <% end %>
+  
+</div>

@@ -27,6 +27,7 @@ require 'will_paginate/active_record'
 
 # Password encryption
 require 'bcrypt'
+require 'faker'
 
 # System Setup
 ######################################################################

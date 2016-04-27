@@ -1,17 +1,78 @@
 <div class="question_by_id">
+  
   <h1>Question</h1>
+  
+  
+  
   <p>Title: <%=@question.title%></p>
+  
+  
+  
+  
+  
   <p>Description: <%=@question.question_text%></p>
   
   
+  
+  
+  
+  <!-- id= ajax? -->
+  <form action="/upvote/<%= @question.id %>" method="post">
+    <input type="hidden" name="question_id" value="<%=@question.id%>">
     
+    <!-- button type instead -->
+    <input type="submit" value="Up" name="Upvote">
+  </form>
+  
+  <form action="/downvote/<%= @question.id %>" method="post">
+    <input type="hidden" name="question_id" value="<%=@question.id%>">
+    <input type="submit" value="Down" name="Downvote">
+  </form>
+  <!-- display number of answers-->
+  
+  
+  
+  
+
 </div>
 
 
 <div class="answer_by_question">
+  
+  
+  <h2>Answers:</h2>
+  
+  <% @question.answers.each do |answer| %>
+    <% user = User.find(answer.user_id) %>
+    <form action="/upvote/<%=answer.id%>" method="post">
+      <input type="hidden" name="question_id" value="<%=@question.id%>">
+      <button type="submit" value="Up" name="Upvote">
+        Upvote | <%=answer.answervotes.where(upvote: 1).count%>
+      </button>
+    </form>
+
+    <form action="/answer/downvote/<%=answer.id%>" method="post">
+      <input type="hidden" name="question_id" value="<%=@question.id%>">
+      <input type="submit" value="Down" name="Downvote">
+    </form>	
+  
+  
+  
+
+    <strong><a href="/users/<%=user.id%>"><%=user.name%></a></strong>
+
+  
+  
+  
+    <p>Answer: <%=answer.answer_text%></p>
+  <% end %>
+  
+  
+  
+  
   <h2>Add answer</h2>
   
-  <% if logged_in %>
+  <% if logged_in? %>
   <form action="/answers" method="post">
  		<input type="hidden" name="question_id" value="<%=@question.id%>">
  		<label>Answer: </label>
@@ -22,13 +83,6 @@
   <p>You are not logged in. Only members are allowed to post new answers.</p>
   <% end %>
   
-  <h2>Answers:</h2>
-  
-  <% @answers.each do |answer| %>
-    <% if answer.question_id == @question.id %>
-      <p>Answer: <%=answer.answer_text%></p>
-    <% end %>
-  <% end %>
   
   
 </div>

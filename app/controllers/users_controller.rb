@@ -24,21 +24,26 @@ get '/login' do
 end
   
 post '/login' do
-    if user = User.find_by(email: params[:email])
-        if user.authenticate(params[:password])
-            session[:user_id] = user.id
-          redirect "/users/#{user.id}"
-        else
-            @errors = "password-does-not-match"
-            #redirect to login error
-        end
+  if user = User.find_by(email: params[:email])
+    if user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/users/#{user.id}"
     else
-        errors = "email-does-not-exist"
-      redirect "/users/login?errors=#{errors}"
+      @errors = "password-does-not-match"
+      redirect "/users/login?errors=#{@errors}"
     end
+  else
+    errors = "email-does-not-exist"
+    redirect "/users/login?errors=#{errors}"
+  end
 end
 
 #View
+get "/users" do
+  @user = User.all
+  erb :"user/index"
+end
+
 get "/users/:id" do
   @user = User.find(params[:id])
   erb :"user/profile"
@@ -47,6 +52,6 @@ end
 
 #Logout
 delete '/logout' do
-    session.clear
-    redirect "/"
+  session.clear
+  redirect "/"
 end

@@ -5,15 +5,9 @@
       <tr>
         <td><%= question.title %></td>
         <td><%= question.question_text %></td>
-        <td><%= question.user_id %></td>
+        <td><a href="users/<%=question.user_id%>"><%=question.user_id%></a></td>
       </tr>
     <% end %>
   </table>
   
-</div>
-
-
-
-<div class="answer_index">
-    Showing particular question's answer
 </div>

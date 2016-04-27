@@ -3,7 +3,7 @@ get "/questions/new" do
   erb :"question/new"
 end
 
-get "/questions" do
+post "/questions" do
   @user = current_user
   question = current_user.questions.new(params[:question])
   if question.save
@@ -15,7 +15,7 @@ get "/questions" do
 end
 
 #Show all questions
-get "/questions" do
+get "/questions/" do
   @questions = Question.all
   erb :"question/index"
 end
@@ -40,3 +40,26 @@ delete "/questions/:id" do
       error = "unable to delete"
   end
 end
+
+#Question Upvote
+post "/upvote/:id" do
+  q = Questionvote.create(upvote: 1, question_id: params[:question_id])
+  redirect "/questions/#{q.question_id}"
+end
+
+#Question Downvote
+post "/downvote/:id" do
+  q = Questionvote.create(downvote: 1, question_id: params[:question_id])
+  redirect "/questions/#{q.question_id}"
+end
+
+#Answer Upvote
+
+
+#Answer Downvote
+
+
+
+
+
+

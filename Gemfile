@@ -17,6 +17,7 @@ gem 'actionpack'
 gem 'sinatra-activerecord'
 gem 'bcrypt'
 gem 'will_paginate'
+gem 'faker'
 
 # Adding Database elements
 gem 'pg'

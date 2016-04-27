@@ -1,5 +1,40 @@
-<div class="welcome_page">
-  <h1>Hello World</h1>
+<div class="home-page">
+     
+  <div class="header">
+    <h1>Top stories</h1>
+  </div>
+
+  <% @top_stories.each do |question| %>
+
+    <% user = User.find(question.user_id) %>
+    <a href="questions/<%=question.id%>"><%= question.title %></a>
+
+    <small> by <a href="users/<%=question.id%>"><%=user.name%></a></small>
+
+     <!-- id= ajax? -->
+    <form action="/upvote/<%= question.id %>" method="post">
+      <input type="hidden" name="question_id" value="<%=question.id%>">
+
+      <!-- button type instead -->
+      <input type="submit" value="Up" name="Upvote">
+    </form>
+
+    <form action="/downvote/<%= question.id %>" method="post">
+      <input type="hidden" name="question_id" value="<%=question.id%>">
+      <input type="submit" value="Down" name="Downvote">
+    </form>
+    <!-- display number of answers-->	 
+
+    <a href="questions/<%=question.id%>">Answers: </a><%=question.answers.count%>
+  
+  <%end%>		
+  <%= will_paginate @top_stories %>
+  
+</div>
+  
+  
+
+<div class="side bar">
   
   <% if logged_in? %>
     <p>Welcome <%=current_user.name %>!</p>

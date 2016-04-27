@@ -1,6 +1,6 @@
 class Answer < ActiveRecord::Base
   
-  attr_accessors :answer
+  attr_accessor :answer
   
   validates :answer_text, presence: true
   

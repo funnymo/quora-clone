@@ -3,7 +3,6 @@ class CreateQuestionVotes < ActiveRecord::Migration
     create_table :questionvotes do |x|
       x.integer :upvote
       x.integer :downvote
-
       x.belongs_to :question
       x.belongs_to :user
     end
