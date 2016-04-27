@@ -1,0 +1,13 @@
+<div class="profile_container">
+  <h1>Your Profile</h1>
+  
+  Name: <%= @user.name %><br>
+  Email: <%= @user.email %><br>
+  Description: <%= @user.description %><br>
+  
+  <% if authorization?(@user.id) %>
+  
+    <a href="/logout"><button>Logout</button></a>
+  
+  <% end %>
+</div>

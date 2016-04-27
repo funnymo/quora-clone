@@ -6,7 +6,7 @@ get "/questions" do
         #redirect to questions #{question.id}
     else
         @errors = "unable to create question"
-        flash[:error] = "Something went wrong!"
+#        flash[:error] = "Something went wrong!"
         #redirect to error?
     end
 end
@@ -35,6 +35,6 @@ delete "/questions/:id" do
         #redirect to current user profile
     else
         error = "unable to delete"
-        flash[:error] = "Something went wrong!"
+#        flash[:error] = "Something went wrong!"
     end
 end

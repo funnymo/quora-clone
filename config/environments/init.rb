@@ -23,6 +23,7 @@ require 'uri'
 ######################################################################
 # Pagination
 require 'will_paginate'
+require 'will_paginate/active_record'
 
 # Password encryption
 require 'bcrypt'

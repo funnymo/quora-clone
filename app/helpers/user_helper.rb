@@ -5,3 +5,7 @@ end
 def logged_in?
   !current_user.nil?
 end
+
+def authorization?(user)
+  user == session[:user_id]
+end

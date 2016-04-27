@@ -16,6 +16,7 @@ gem 'activesupport'
 gem 'actionpack'
 gem 'sinatra-activerecord'
 gem 'bcrypt'
+gem 'will_paginate'
 
 # Adding Database elements
 gem 'pg'

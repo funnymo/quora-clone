@@ -1,0 +1,26 @@
+<div class="signup">
+    
+  <h2>Sign up for an account!</h2>
+
+  <% if @errors %>
+    <% errors.each do |error| %>
+      <%= error %>
+    <% end %>
+  <% end %>
+  
+  <% if logged_in? %>
+    <p>You are logged in.</p>
+  <% else %>
+
+    <form method=post action=/signup>
+      <label>Name: </label>
+      <input type=text placeholder="Name" name="user[name]"><br>
+      <label>Email: </label>
+      <input type=email placeholder="Email" name="user[email]"><br>
+      <label>Password: </label>
+      <input type=password placeholder="Password" name="user[password]">
+      <input type=submit value="Sign up">
+    </form>
+  
+  <% end %>
+</div>

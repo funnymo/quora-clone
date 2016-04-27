@@ -1,0 +1,12 @@
+<div class="all_users">
+  
+  <table>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </table>
+  
+</div>

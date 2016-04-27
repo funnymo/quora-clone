@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
   
   attr_accessor :question
   
-  validates :title
+  validates :title, presence: true
   
   belongs_to :user
   
