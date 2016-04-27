@@ -1,6 +1,6 @@
 #Signup
-get "/users/signup" do
-  erb :"user/registration"
+get "/signup" do
+  erb :"user/signup"
 end
 
 post '/signup' do
@@ -10,7 +10,7 @@ post '/signup' do
     redirect "/users/#{user.id}"
   else
     @errors = "unable to sign-up"
-    erb :"user/registration"
+    erb :"user/signup"
   end
 end
 
@@ -20,7 +20,7 @@ get '/login' do
   unless params[:errors].nil?
     @errors = params[:errors]
   end
-  erb :"/login"
+  erb :"/user/login"
 end
   
 post '/login' do
