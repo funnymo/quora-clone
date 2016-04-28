@@ -54,12 +54,13 @@ post "/downvote/:id" do
 end
 
 #Answer Upvote
-
+post "/answer/upvote/:id" do
+  a = Answervote.create(upvote: 1, user_id: params[:user_id], question_id: params[:question_id])
+  redirect "/questions/#{a.question_id}"
+end
 
 #Answer Downvote
-
-
-
-
-
-
+post "/answer/downvote/:id" do
+  a = Answervote.create(downvote: 1, answer_id: params[:answer_id], question_id: params[:question_id])
+  redirect "/questions/#{a.question_id}"
+end

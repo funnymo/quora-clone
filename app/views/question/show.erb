@@ -1,88 +1,77 @@
 <div class="question_by_id">
-  
-  <h1>Question</h1>
-  
-  
-  
-  <p>Title: <%=@question.title%></p>
-  
-  
-  
-  
-  
-  <p>Description: <%=@question.question_text%></p>
-  
-  
-  
-  
-  
+  <div class="jumbotron">
+    <div class="container">
+      <h3><a href="/questions/<%=@question.id%>"><%=@question.title%></a></h3>
+      <scan style="size: 8;"><%=@question.question_text%><br> by <strong><a href="/users/<%=@question.user.id%>"><%=@question.user.name%></a></strong></scan>
+      
+        <br><br>
+
   <!-- id= ajax? -->
   <form action="/upvote/<%= @question.id %>" method="post">
     <input type="hidden" name="question_id" value="<%=@question.id%>">
-    
-    <!-- button type instead -->
-    <input type="submit" value="Up" name="Upvote">
+    <button type="submit" value="Up" name="Upvote">
+      Upvote | <%=@question.questionvotes.where(upvote: 1).count%>
+      </button>
   </form>
+
   
   <form action="/downvote/<%= @question.id %>" method="post">
     <input type="hidden" name="question_id" value="<%=@question.id%>">
-    <input type="submit" value="Down" name="Downvote">
+    <button type="submit" value="Down" name="Downvote">
+      Downvote | <%=@question.questionvotes.where(downvote: 1).count%>
+      </button>
   </form>
-  <!-- display number of answers-->
-  
-  
-  
-  
+    </div>
+  </div>
 
 </div>
 
 
 <div class="answer_by_question">
+    <div class="jumbotron">
+    <div class="container">
   
-  
-  <h2>Answers:</h2>
+  <h3><%= @question.answers.count %> answer(s)</h3>
   
   <% @question.answers.each do |answer| %>
     <% user = User.find(answer.user_id) %>
-    <form action="/upvote/<%=answer.id%>" method="post">
+      
+     <scan style="size: 8;"> <%=answer.answer_text%><br> by <strong><a href="/users/<%=user.id%>"><%=user.name%></a></strong></scan>
+<br><br>
+    
+      
+    <form action="/answer/upvote/<%=answer.id%>" method="post">
       <input type="hidden" name="question_id" value="<%=@question.id%>">
-      <button type="submit" value="Up" name="Upvote">
-        Upvote | <%=answer.answervotes.where(upvote: 1).count%>
+      <button type="submit" value="Up" name="Upvote">Upvote | <%=answer.answervotes.where(upvote: 1).count%>
       </button>
     </form>
-
     <form action="/answer/downvote/<%=answer.id%>" method="post">
       <input type="hidden" name="question_id" value="<%=@question.id%>">
-      <input type="submit" value="Down" name="Downvote">
+      <button type="submit" value="Down" name="Downvote">
+        Downvote | <%=answer.answervotes.where(downvote: 1).count%>
+      </button>
     </form>	
   
-  
-  
-
-    <strong><a href="/users/<%=user.id%>"><%=user.name%></a></strong>
-
-  
-  
-  
-    <p>Answer: <%=answer.answer_text%></p>
+  <br>
+    
   <% end %>
   
   
   
   
-  <h2>Add answer</h2>
+  <h3>Add answer</h3>
   
   <% if logged_in? %>
   <form action="/answers" method="post">
  		<input type="hidden" name="question_id" value="<%=@question.id%>">
- 		<label>Answer: </label>
- 		<textarea type="text" name="answer_text"></textarea>
- 		<input type="submit" name="Add Answer" />
+ 		<textarea style="width: 400px; height: 100px;" type="text" name="answer_text"></textarea><br>
+ 		<a href="/questions/<%=@question.id%>"><button>Add Answer</button></a>
  	</form>
   <% else %>
-  <p>You are not logged in. Only members are allowed to post new answers.</p>
+  <scan style="size: 8;">You are not logged in. Only members are allowed to post new answers.</scan>
   <% end %>
   
   
-  
+      </div>
+  </div>
 </div>

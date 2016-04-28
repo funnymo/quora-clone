@@ -1,11 +1,10 @@
 <div class="signup">
-    
-  <h2>Sign up for an account!</h2>
+      <div class="jumbotron">
+      <div class="container">
+  <h3>Sign up</h3>
 
   <% if @errors %>
-    <% errors.each do |error| %>
-      <%= error %>
-    <% end %>
+        <scan style="color: red; size: 10;">Something went wrong.</scan>
   <% end %>
   
   <% if logged_in? %>
@@ -13,16 +12,17 @@
   <% else %>
 
     <form method=post action=/signup>
-      <label>Name: </label>
-      <input type=text placeholder="Name" name="user[name]"><br>
-      <label>Email: </label>
-      <input type=email placeholder="Email" name="user[email]"><br>
-      <label>Password: </label>
-      <input type=password placeholder="Password" name="user[password]">
-      <label>Confirm Password: </label>		
-      <input type=password placeholder="Confirm Password" name="confirm_password">
-      <input type=submit value="Sign up">
+
+      <input style="width: 200px; height: 35px;" type=text placeholder="Name" name="user[name]"><br>
+      <input style="width: 200px; height: 35px;" type=email placeholder="Email" name="user[email]"><br>
+      <input style="width: 200px; height: 35px;" type=password placeholder="Password" name="user[password]">	
+      <br>
+      <input style="width: 200px; height: 35px;" type=password placeholder="Confirm Password" name="confirm_password">
+      <br><br>
+      <a href="/login"><button>Sign up</button></a>
     </form>
   
   <% end %>
+</div>
+  </div>
 </div>

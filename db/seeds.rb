@@ -15,7 +15,7 @@ end
 end
 
 100.times do
-  Answervote.create(upvote: Faker::Number.between(0, 1), downvote: Faker::Number.between(0, 1), answer_id: Faker::Number.between(1, 100))
+  Answervote.create(upvote: Faker::Number.between(0, 1), downvote: Faker::Number.between(0, 1), answer_id: Faker::Number.between(1, 100), user_id: Faker::Number.between(1,200))
 end
 
 

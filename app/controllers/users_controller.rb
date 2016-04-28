@@ -9,7 +9,7 @@ post '/signup' do
     session[:user_id] = user.id
     redirect "/users/#{user.id}"
   else
-    @errors = "unable to sign-up"
+    @errors = "email already exist"
     erb :"user/signup"
   end
 end
@@ -51,7 +51,7 @@ end
 
 
 #Logout
-delete '/logout' do
+get '/logout' do
   session.clear
   redirect "/"
 end

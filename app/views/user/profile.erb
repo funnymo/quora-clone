@@ -1,25 +1,41 @@
-<div class="profile_container">
-  <h1>Your Profile</h1>
-  
-  Name: <%= @user.name %><br>
-  Email: <%= @user.email %><br>
-  Description: <%= @user.description %><br>
+<div class="jumbotron">
+      <div class="container">
+  <h3>Your Profile</h3>
+  </div>
+  <div class="container">
+    <ul style="list-style-type: none;">
+      <li><strong>Name: </strong><%= @user.name %></li>
+      <li><strong>Email: </strong><%= @user.email %></li>
+      <li><strong>Description: </strong><%= @user.description %></li>
+    </ul>
   
   <% if authorization?(@user.id) %>
   
     <a href="/logout"><button>Logout</button></a>
   
   <% end %>
+  </div>
+</div>
   
-  
-  <h1>Your Questions</h1>
-  
+<div class="jumbotron">
+      <div class="container">
+        
+  <h3>Your Questions</h3>
+  </div>
+  <div class="container">
   <% @user.questions.each do |question| %>
     <ul>
-      <li>Question: <%=question.title%></li>
-      <li>Description: <%=question.question_text%></li>
+      <li><a href="/questions/<%=question.id%>"><%=question.title%></a></li>
+      <small><%=question.question_text%>&nbsp;&nbsp;<a style="font-style: italic;" href="/questions/<%question.id%>"><%=question.answers.count%> answers</a></small>
     </ul>
   <% end %>
-  <a href="/questions/new"><button>New Question</button></a>
+    
+      <% if authorization?(@user.id) %>
   
+      <a href="/questions/new"><button>Ask Question</button></a>
+    
+  
+  <% end %>
+
+  </div>
 </div>

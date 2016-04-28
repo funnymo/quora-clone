@@ -20,6 +20,7 @@ require "sinatra/reloader" if development?
 	# embedded ruby
 require 'erb'
 require 'uri'
+require 'byebug'
 ######################################################################
 # Pagination
 require 'will_paginate'
@@ -27,6 +28,8 @@ require 'will_paginate/active_record'
 
 # Password encryption
 require 'bcrypt'
+
+#Seeder
 require 'faker'
 
 # System Setup

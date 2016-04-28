@@ -9,17 +9,15 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>Quora Clone</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/jumbotron.css" rel="stylesheet">
+    <link href="/../css/jumbotron.css" rel="stylesheet">
 
-  </head>
 
-  <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -30,35 +28,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          
+          
           <a class="navbar-brand" href="/">Quora Clone</a>
         </div>
         
-        
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            
-          </ul>
-          
           <% unless current_user.nil? %>
+          
               <ul class="nav navbar-nav navbar-right">
-
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  Welcome <%=current_user.name%> 
-                  <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="/questions/create">Ask Question</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="/users/<%=current_user.id%>">View Profile</a></li>
-                    <li><a href="#">???</a></li>
-                    <li role="separator" class="divider"></li>
-
-
-
-                    <li><a href="#">Sign Out</a></li>
+                <li><a>Welcome, <%=current_user.name%>!</a></li>
+                    <li><a href="/questions/new"><button type="submit" class="btn btn-success">Ask Question</button></a></li>
+                    <li><a href="/users/<%=current_user.id%>"><button type="submit" class="btn btn-success">View Profile</button></a></li>
+                    <li><a href="/logout"><button type="submit" class="btn btn-success">Sign out</button></a></li>
                   </ul>
-                </li>
-              </ul>
+                
+            
           <%else%>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/login"><button type="submit" class="btn btn-success">Log in</button></a></li>
@@ -69,19 +54,19 @@
       </div>
     </nav>
     
-    
+  
+</head>
+  <body>
     
     <%= yield %>
     
 
-
+  </body>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
 </html>

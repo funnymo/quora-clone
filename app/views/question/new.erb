@@ -1,5 +1,7 @@
 <div class="question_new">
-  <h1>New Question</h1>
+  <div class="jumbotron">
+      <div class="container">
+  <h3>Ask a question</h3>
   
   <% unless @error.nil? %>
     <% @error.each do |error| %>
@@ -9,15 +11,16 @@
   
   <% if logged_in? %>
     <form method=post action=/questions>
-      <label>Question: </label>
-      <input type=text placeholder="Title" name="question[title]"><br>
-      <label>Description: </label>
-      <textarea type=text placeholder="Description" name="question[question_text]"></textarea><br>
-      <input type=submit value="New Question">
+      <input style="width: 400px; height: 35px;" type=text placeholder="Title" name="question[title]">
+      <br><br>
+      <textarea style="width: 400px; height: 100px;" type=text placeholder="Description" name="question[question_text]"></textarea><br>
+        <a href="/questions/new"><button>Ask Question</button></a>
     </form>
   
   <% else %>
     <p>You are not logged in. Only members are allowed to post new questions.</p>
   <% end %>
   
+</div>
+  </div>
 </div>
