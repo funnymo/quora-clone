@@ -1,72 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Quora Clone</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
 
-    <!-- Bootstrap core CSS -->
-    <link href="/../css/bootstrap.min.css" rel="stylesheet">
+  <title>Quora Clone</title>
 
-    <!-- Custom styles for this template -->
-    <link href="/../css/jumbotron.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="/../css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/../css/jumbotron.css" rel="stylesheet">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
 
+        <a class="navbar-brand" href="/">Quora Clone</a>
+      </div>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          
-          
-          <a class="navbar-brand" href="/">Quora Clone</a>
-        </div>
-        
-        <div id="navbar" class="navbar-collapse collapse">
-          <% unless current_user.nil? %>
-          
-              <ul class="nav navbar-nav navbar-right">
-                <li><a>Welcome, <%=current_user.name%>!</a></li>
-                    <li><a href="/questions/new"><button type="submit" class="btn btn-success">Ask Question</button></a></li>
-                    <li><a href="/users/<%=current_user.id%>"><button type="submit" class="btn btn-success">View Profile</button></a></li>
-                    <li><a href="/logout"><button type="submit" class="btn btn-success">Sign out</button></a></li>
-                  </ul>
-                
-            
+      <div id="navbar" class="navbar-collapse collapse">
+        <% unless current_user.nil? %>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a>Welcome, <%=current_user.name%>!</a></li>
+            <li>
+              <a href="/questions/new">
+                <button type="submit" class="btn btn-success">Ask Question</button>
+              </a>
+            </li>
+            <li>
+              <a href="/users/<%=current_user.id%>">
+                <button type="submit" class="btn btn-success">View Profile</button>
+              </a>
+            </li>
+            <li>
+              <a href="/logout">
+                <button type="submit" class="btn btn-success">Sign out</button>
+              </a>
+            </li>
+          </ul>
+
+
           <%else%>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="/login"><button type="submit" class="btn btn-success">Log in</button></a></li>
-              <li><a href="/signup"><button type="submit" class="btn btn-success">Sign up</button></a></li>
+              <li>
+                <a href="/login">
+                  <button type="submit" class="btn btn-success">Log in</button>
+                </a>
+              </li>
+              <li>
+                <a href="/signup">
+                  <button type="submit" class="btn btn-success">Sign up</button>
+                </a>
+              </li>
             </ul>
-          <%end%>
-        </div><!--/.navbar-collapse -->
+            <%end%>
       </div>
-    </nav>
-    
-  
-</head>
-  <body>
-    
-    <%= yield %>
-    
+      <!--/.navbar-collapse -->
+    </div>
+  </nav>
 
-  </body>
-    <!-- Bootstrap core JavaScript
+
+</head>
+
+<body>
+
+  <%= yield %>
+
+</body>
+<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </html>

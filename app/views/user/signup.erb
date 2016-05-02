@@ -1,28 +1,33 @@
 <div class="signup">
-      <div class="jumbotron">
-      <div class="container">
-  <h3>Sign up</h3>
+  <div class="jumbotron">
+    <div class="container">
+      <h3>Sign up</h3>
 
-  <% if @errors %>
+      <% if @errors %>
         <scan style="color: red; size: 10;">Something went wrong.</scan>
-  <% end %>
-  
-  <% if logged_in? %>
-    <p>You are logged in.</p>
-  <% else %>
+        <% end %>
 
-    <form method=post action=/signup>
+          <% if logged_in? %>
+            <p>You are logged in.</p>
+            <% else %>
 
-      <input style="width: 200px; height: 35px;" type=text placeholder="Name" name="user[name]"><br>
-      <input style="width: 200px; height: 35px;" type=email placeholder="Email" name="user[email]"><br>
-      <input style="width: 200px; height: 35px;" type=password placeholder="Password" name="user[password]">	
-      <br>
-      <input style="width: 200px; height: 35px;" type=password placeholder="Confirm Password" name="confirm_password">
-      <br><br>
-      <a href="/login"><button>Sign up</button></a>
-    </form>
-  
-  <% end %>
-</div>
+              <form method=post action=/signup>
+
+                <input style="width: 200px; height: 35px;" type=text placeholder="Name" name="user[name]">
+                <br>
+                <input style="width: 200px; height: 35px;" type=email placeholder="Email" name="user[email]">
+                <br>
+                <input style="width: 200px; height: 35px;" type=password placeholder="Password" name="user[password]">
+                <br>
+                <input style="width: 200px; height: 35px;" type=password placeholder="Confirm Password" name="confirm_password">
+                <br>
+                <br>
+                <a href="/login">
+                  <button>Sign up</button>
+                </a>
+              </form>
+
+              <% end %>
+    </div>
   </div>
 </div>

@@ -1,9 +1,3 @@
-#Show all answers
-#get "/answers" do
-#    @answers = Answer.all
-#    erb :"answer/index" #needed?
-#end
-
 #Create answer
 post "/answers" do
   @answer = current_user.answers.new(question_id: params[:question_id], answer_text: params[:answer_text])

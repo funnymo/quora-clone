@@ -1,54 +1,54 @@
 <div class="home-page">
-     
+
   <div class="jumbotron">
-      <div class="container">
-    <h1>Top stories</h1>
-  </div>
+    <div class="container">
+      <h1>Top stories</h1>
+    </div>
   </div>
 
   <% @top_stories.each do |question| %>
-  <div class="jumbotron">
+    <div class="jumbotron">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-          
-          
-    <% user = User.find(question.user_id) %>
-          <h4><a href="questions/<%=question.id%>"><%= question.title %></a>
 
-    <small> by <a href="users/<%=question.id%>"><%=user.name%></a></small></h4>
 
-     <!-- id= ajax? -->
-    <form action="/upvote/<%=question.id %>" method="post">
-      <input type="hidden" name="question_id" value="<%=question.id%>">
-      <button type="submit" value="Up" name="Upvote">
-      Upvote | <%=question.questionvotes.where(upvote: 1).count%>
-      </button>
-    </form>
+            <% user = User.find(question.user_id) %>
+              <h4><a href="questions/<%=question.id%>"><%= question.title %></a>
+              <small> by <a href="users/<%=question.id%>"><%=user.name%></a></small></h4>
+              <div class="button-container">
+                <div style="float:left">
+                  <form action="/upvote/<%=question.id %>" method="post">
+                    <input type="hidden" name="question_id" value="<%=question.id%>">
+                    <button type="submit" value="Up" name="Upvote">
+                      <span class="glyphicon glyphicon-thumbs-up"></span>
+                      <%=question.questionvotes.where(upvote: 1).count%>
+                    </button>
+                  </form>
+                </div>
 
-    <form action="/downvote/<%=question.id %>" method="post">
-      <input type="hidden" name="question_id" value="<%=question.id%>">
-      <button type="submit" value="Down" name="Downvote">
-      Downvote | <%=question.questionvotes.where(downvote: 1).count%>
-      </button>
-    </form>
+                <div>
+                  <form action="/downvote/<%=question.id %>" method="post">
+                    <input type="hidden" name="question_id" value="<%=question.id%>">
+                    <button type="submit" value="Down" name="Downvote">
+                      <span class="glyphicon glyphicon-thumbs-down"></span>
+                      <%=question.questionvotes.where(downvote: 1).count%>
+                    </button>
+                  </form>
+                </div>
+              </div>
 
-    <a href="questions/<%=question.id%>">Answers: </a><%=question.answers.count%>
-  <br><br>
+              <a href="questions/<%=question.id%>">Answers: </a>
+              <%=question.answers.count%>
+                <br>
+                <br>
           </div>
         </div>
+      </div>
     </div>
-  </div>
-  <%end%>		
-
-
-  
-  <%= will_paginate @top_stories %>
-  
-  <footer>
-        <p>&copy; 2016 Quora Clone</p>
-      </footer>
-  
+          <%end%>
+  <span> <%= will_paginate @top_stories %></span>
+    <footer>
+      <p> &copy; 2016 Quora Clone</p>
+    </footer>
 </div>
-  
-  
